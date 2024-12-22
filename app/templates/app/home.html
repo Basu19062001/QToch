@@ -41,7 +41,9 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
-{% endblock banner-slider %} {% block information %}
+{% endblock banner-slider %} 
+
+{% block information %}
 <div class="container">
   <div class="row bg-success text-center p-5 text-white border-bottom shadow">
     <h1>Products</h1>
@@ -69,7 +71,7 @@
     style="animation-duration: 1s; animation-delay: 0.6s; animation-name: none"
   >
     <div class="goodnesssec buttermilk smbg">
-      <a href="#">
+      <a href="{% url "category" 'GH'%}">
         <div class="goodnessseccount text-center">
           <img src="{% static "app/images/product/buffalo-ghee.png" %}"
           class="img-responsive center-block" alt="image"/>
@@ -86,7 +88,7 @@
     style="animation-duration: 1s; animation-delay: 0.6s; animation-name: none"
   >
     <div class="goodnesssec buttermilk curdbgpro">
-      <a href="#">
+      <a href="{% url "category" 'CR' %}">
         <div class="goodnessseccount text-center">
           <img src="{% static "app/images/product/curd-total.png" %}"
           class="img-responsive center-block" alt="image"/>
@@ -103,7 +105,7 @@
     style="animation-duration: 1s; animation-delay: 0.6s; animation-name: none"
   >
     <div class="goodnesssec buttermilk buttermilk">
-      <a href="#">
+      <a href="{% url "category" "IC" %}">
         <div class="goodnessseccount text-center">
           <img src="{% static "app/images/product/kulfi.png" %}"
           class="img-responsive center-block" alt="image"/>
@@ -125,7 +127,7 @@
     style="animation-duration: 1s; animation-delay: 0.6s; animation-name: none"
   >
     <div class="goodnesssec buttermilk smbg">
-      <a href="#">
+      <a href="{% url "category" "MS" %}">
         <div class="goodnessseccount text-center">
           <img src="{% static "app/images/product/milk-shake-chocolate.png" %}"
           class="img-responsive center-block" alt="image"/>
@@ -142,7 +144,7 @@
     style="animation-duration: 1s; animation-delay: 0.6s; animation-name: none"
   >
     <div class="goodnesssec buttermilk curdbgpro">
-      <a href="#">
+      <a href="{% url "category" "ML" %}">
         <div class="goodnessseccount text-center">
           <img src="{% static "app/images/product/cow-milk.png" %}"
           class="img-responsive center-block" alt="image"/>
@@ -159,7 +161,7 @@
     style="animation-duration: 1s; animation-delay: 0.6s; animation-name: none"
   >
     <div class="goodnesssec buttermilk buttermilk">
-      <a href="#">
+      <a href="{% url "category" "IC" %}">
         <div class="goodnessseccount text-center">
           <img src="{% static "app/images/product/icbars.png" %}"
           class="img-responsive center-block" alt="image"/>
