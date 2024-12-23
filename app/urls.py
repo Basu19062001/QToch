@@ -3,8 +3,13 @@ from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_view
+from django.contrib.auth.views import LogoutView
 from . forms import LoginForm
 from . forms import MyPasswordResetForm, MyPasswordChangeForm
+
+class CustomLogoutView(LogoutView):
+    def get(self, request, *args, **kwargs):
+        return self.post(request, *args, **kwargs)
 
 urlpatterns = [
   path('', views.home,name='home'),
@@ -23,5 +28,7 @@ urlpatterns = [
   path('password-reset/', auth_view.PasswordResetView.as_view(template_name='app/password_reset.html', form_class=MyPasswordResetForm), name='password_reset'),
   path('passwordchange/',auth_view.PasswordChangeView.as_view(template_name='app/changepassword.html',form_class = MyPasswordChangeForm, success_url='/passwordchangedone') ,name='passwordchange'),
   path('passwordchangedone/',auth_view.PasswordChangeDoneView.as_view(template_name='app/passwordchangedone.html'),name='passwordchangedone'),
+
+path('logout/', CustomLogoutView.as_view(next_page='login'), name='logout'),
 
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
