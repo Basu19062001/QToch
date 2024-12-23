@@ -169,7 +169,7 @@ def payment_done(request):
   return redirect('orders')
 
 def orders(request):
-  order_place = OrderPlaced.objects.filter(user=request.user)
+  order_placed = OrderPlaced.objects.filter(user=request.user)
   return render(request, 'app/orders.html',locals())
   
 
