@@ -27,12 +27,12 @@
         </li>
       </ul>
 
-      <form action="/add-to-cart" class="d-inline">
-        <input type="hidden" name="prod_id" value={{product.id}}/>
+      <form action="/add-to-cart/" class="d-inline">
+        <input type="hidden" name="prod_id" value="{{ product.id }}" />
         <button type="submit" class="btn btn-primary shadow px-5 py-2">
-          Add to Cart
+            Add to Cart
         </button>
-      </form>
+    </form>
           <a href="{% url "showCart" %}" class="btn btn-warning shadow px-5 py-2 ms-4">
             Buy Now
           </a>

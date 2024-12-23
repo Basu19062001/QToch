@@ -3,6 +3,7 @@ from django.views import View
 from . models import Product, Customer, Cart
 from .forms import CustomerRegistrationForm, CustomerProfileForm
 from django.contrib import messages
+from django.http import HttpResponseBadRequest
 
 # Create your views here.
 def home(request):
@@ -94,13 +95,29 @@ class updateAddress(View):
   
   
 def add_to_cart(request):
-  user = request.user
-  product_id = request.GET.get('prod_id')
-  product = Product.objects.get(id=product_id)
-  Cart(user=user, product=product).save()
-  return redirect('/cart')
+    print(request.GET)
+    user = request.user
+    product_id = request.GET.get('prod_id')
+    try:
+        product_id = int(product_id)  # Ensure product_id is an integer
+        product = Product.objects.get(id=product_id)
+        Cart(user=user, product=product).save()
+        return redirect('/cart')
+    except ValueError:
+        return HttpResponseBadRequest("Invalid product ID.")
+    except Product.DoesNotExist:
+        return HttpResponseBadRequest("Product not found.")
 
+# user = request.user
+#   product_id = request.GET.get('prod_id')
+#   try:
+#     product_id = int(product_id)
+#   except(ValueError, TypeError):
+#     return HttpResponseBadRequest("Invalid product ID")
+#   product = get_object_or_404(Product, id=product_id)
+#   Cart.objects.create(user=user, product=product)
+#   return redirect('/cart')
 def show_cart(request):
   user = request.user
   cart = Cart.objects.filter(user=user)
-  return render(request, 'app/showCart.html',locals())
+  return render(request, 'app/addToCart.html',locals())
