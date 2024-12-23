@@ -134,3 +134,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #testing purpose
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+RAZOR_KEY_ID = "rzp_test_IMGtKJtq4rEBR5"
+RAZOR_KEY_SECRET = "1Ou4JJu3IQUYkNMWO88sz5fL"
