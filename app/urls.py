@@ -1,4 +1,5 @@
 from django.urls import path
+from django.contrib import admin
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
@@ -6,6 +7,7 @@ from django.contrib.auth import views as auth_view
 from django.contrib.auth.views import LogoutView
 from . forms import LoginForm
 from . forms import MyPasswordResetForm, MyPasswordChangeForm, MySetPasswordForm
+
 
 class CustomLogoutView(LogoutView):
     def get(self, request, *args, **kwargs):
@@ -49,3 +51,7 @@ path('password-reset-confirm/<uidb64>/<token>', auth_view.PasswordResetConfirmVi
 path('password-reset-complete/', auth_view.PasswordResetCompleteView.as_view(template_name='app/password_reset_complete.html'), name='password_reset_complete'),
 
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+admin.site.site_header = "QToch Diary"
+admin.site.site_title = "QToch Diary"
+admin.site.site_index_title = "Welcome to QToch Diary Shop"
