@@ -28,6 +28,8 @@ urlpatterns = [
   path('paymentdone/', views.payment_done, name='paymentdone'),
   path('orders/', views.orders, name='orders'),
   
+  path('search/',views.search, name='search'),
+  
   path('pluscart/', views.plus_cart),
   path('minuscart/', views.minus_cart),
   path('removecart/', views.remove_cart),
