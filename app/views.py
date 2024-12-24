@@ -189,6 +189,17 @@ def show_cart(request):
     wishlist = len(Wishlist.objects.filter(user=request.user))
   return render(request, 'app/addToCart.html',locals())
 
+@login_required
+def show_wishlist(request):
+  user = request.user
+  totalitem = 0
+  wishlist = 0
+  if request.user.is_authenticated:
+    totalitem = len(Cart.objects.filter(user=request.user))
+    wishlist = len(Wishlist.objects.filter(user=request.user))
+  product = Wishlist.objects.filter(user=user)
+  return render (request, 'app/wishlist.html',locals())
+
 @method_decorator(login_required, name='dispatch')
 class Checkout(View):
   def get(self, request):
